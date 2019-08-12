@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3C036DDC23014E1100613270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C036DDB23014E1100613270 /* AppDelegate.swift */; };
-		3C036DDE23014E1100613270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C036DDD23014E1100613270 /* ViewController.swift */; };
 		3C036DE123014E1100613270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DDF23014E1100613270 /* Main.storyboard */; };
 		3C036DE323014E1200613270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DE223014E1200613270 /* Assets.xcassets */; };
 		3C036DE623014E1200613270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DE423014E1200613270 /* LaunchScreen.storyboard */; };
@@ -16,12 +15,15 @@
 		3C036DF02301508100613270 /* KKboxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C036DEF2301508100613270 /* KKboxProvider.swift */; };
 		3C036DF3230157A700613270 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C036DF2230157A700613270 /* User.swift */; };
 		3C036DF523016BDF00613270 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C036DF423016BDF00613270 /* PlayList.swift */; };
+		3C054A842301C471004C574C /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A832301C471004C574C /* PlayListViewController.swift */; };
+		3C054A892301C523004C574C /* PlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A882301C523004C574C /* PlayListView.swift */; };
+		3C054A8B2301C86E004C574C /* PlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A8A2301C86E004C574C /* PlayListTableViewCell.swift */; };
+		3C054A8E2301C8AE004C574C /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C036DD823014E1000613270 /* Medium-Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medium-Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C036DDB23014E1100613270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C036DDD23014E1100613270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3C036DE023014E1100613270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C036DE223014E1200613270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C036DE523014E1200613270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +32,10 @@
 		3C036DEF2301508100613270 /* KKboxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKboxProvider.swift; sourceTree = "<group>"; };
 		3C036DF2230157A700613270 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3C036DF423016BDF00613270 /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
+		3C054A832301C471004C574C /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
+		3C054A882301C523004C574C /* PlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListView.swift; sourceTree = "<group>"; };
+		3C054A8A2301C86E004C574C /* PlayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableViewCell.swift; sourceTree = "<group>"; };
+		3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +69,11 @@
 			isa = PBXGroup;
 			children = (
 				3C036DDB23014E1100613270 /* AppDelegate.swift */,
+				3C054A8C2301C899004C574C /* Helper */,
+				3C054A872301C4B6004C574C /* Storyboard */,
+				3C054A862301C4AE004C574C /* View */,
+				3C054A852301C499004C574C /* Controller */,
 				3C036DF12301579A00613270 /* Model */,
-				3C036DDD23014E1100613270 /* ViewController.swift */,
-				3C036DDF23014E1100613270 /* Main.storyboard */,
 				3C036DE223014E1200613270 /* Assets.xcassets */,
 				3C036DE423014E1200613270 /* LaunchScreen.storyboard */,
 				3C036DE723014E1200613270 /* Info.plist */,
@@ -82,6 +90,39 @@
 				3C036DEF2301508100613270 /* KKboxProvider.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3C054A852301C499004C574C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3C054A832301C471004C574C /* PlayListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3C054A862301C4AE004C574C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C054A882301C523004C574C /* PlayListView.swift */,
+				3C054A8A2301C86E004C574C /* PlayListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3C054A872301C4B6004C574C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3C036DDF23014E1100613270 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3C054A8C2301C899004C574C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C054A892301C523004C574C /* PlayListView.swift in Sources */,
 				3C036DF3230157A700613270 /* User.swift in Sources */,
 				3C036DF523016BDF00613270 /* PlayList.swift in Sources */,
-				3C036DDE23014E1100613270 /* ViewController.swift in Sources */,
+				3C054A842301C471004C574C /* PlayListViewController.swift in Sources */,
 				3C036DF02301508100613270 /* KKboxProvider.swift in Sources */,
+				3C054A8B2301C86E004C574C /* PlayListTableViewCell.swift in Sources */,
 				3C036DDC23014E1100613270 /* AppDelegate.swift in Sources */,
+				3C054A8E2301C8AE004C574C /* UITableViewCell+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
