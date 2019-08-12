@@ -12,6 +12,7 @@
 		3C036DE123014E1100613270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DDF23014E1100613270 /* Main.storyboard */; };
 		3C036DE323014E1200613270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DE223014E1200613270 /* Assets.xcassets */; };
 		3C036DE623014E1200613270 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DE423014E1200613270 /* LaunchScreen.storyboard */; };
+		3C036DEE23014F0900613270 /* KKbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C036DED23014F0900613270 /* KKbox.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3C036DE223014E1200613270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C036DE523014E1200613270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C036DE723014E1200613270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C036DED23014F0900613270 /* KKbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KKbox.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				3C036DE223014E1200613270 /* Assets.xcassets */,
 				3C036DE423014E1200613270 /* LaunchScreen.storyboard */,
 				3C036DE723014E1200613270 /* Info.plist */,
+				3C036DED23014F0900613270 /* KKbox.plist */,
 			);
 			path = "Medium-Playground";
 			sourceTree = "<group>";
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C036DEE23014F0900613270 /* KKbox.plist in Resources */,
 				3C036DE623014E1200613270 /* LaunchScreen.storyboard in Resources */,
 				3C036DE323014E1200613270 /* Assets.xcassets in Resources */,
 				3C036DE123014E1100613270 /* Main.storyboard in Resources */,

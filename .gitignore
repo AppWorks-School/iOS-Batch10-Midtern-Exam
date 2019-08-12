@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/xcode,swift,macos,cocoapods
 # Edit at https://www.gitignore.io/?templates=xcode,swift,macos,cocoapods
 
+#Project Specific Ignore File
+KKbox.plist
+
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
 
