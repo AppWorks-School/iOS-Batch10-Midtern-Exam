@@ -60,4 +60,35 @@ class KKboxProvider {
         
         return data.joined(separator: "&")
     }
+    
+    func fetchNewHitsPlaylist(_ id: String) {
+        
+        guard let user = user else { return }
+        
+        let url = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/\(id)/tracks?territory=TW&limit=3")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        
+        request.allHTTPHeaderFields = [ "Authorization" : user.tokenType + " " + user.accessToken ]
+        
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            
+            guard let httpResponse = response as? HTTPURLResponse else { return }
+            
+            print(httpResponse.statusCode)
+            
+            let playList = try! JSONDecoder().decode(PlayList.self, from: data!)
+            
+            let jsonData = try! JSONEncoder().encode(playList)
+            
+            let json = try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+            
+            print(json)
+            
+            print(playList)
+            
+        }).resume()
+    }
 }
