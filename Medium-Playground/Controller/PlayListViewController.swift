@@ -82,5 +82,16 @@ extension PlayListViewController: UITableViewDataSource {
 }
 
 extension PlayListViewController: UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.frame.origin.x = UIScreen.main.bounds.width
+        
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations: {
+            
+            cell.frame.origin.x = 0
+        })
+        
+        animator.startAnimation()
+    }
 }
