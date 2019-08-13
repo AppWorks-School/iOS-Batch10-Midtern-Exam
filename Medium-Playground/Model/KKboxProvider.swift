@@ -44,8 +44,6 @@ class KKboxProvider {
             
             completion(Result.success(user))
             
-            self?.fetchNewHitsPlaylist("DZrC8m29ciOFY2JAm3")
-            
         }).resume()
     }
     
@@ -61,7 +59,10 @@ class KKboxProvider {
         return data.joined(separator: "&")
     }
     
-    func fetchNewHitsPlaylist(_ id: String) {
+    func fetchNewHitsPlaylist(
+        _ id: String,
+        completion: @escaping (Result<PlayList, Error>) -> Void
+    ) {
         
         guard let user = user else { return }
         
@@ -80,6 +81,8 @@ class KKboxProvider {
             print(httpResponse.statusCode)
             
             let playList = try! JSONDecoder().decode(PlayList.self, from: data!)
+            
+            completion(Result.success(playList))
             
             let jsonData = try! JSONEncoder().encode(playList)
             
