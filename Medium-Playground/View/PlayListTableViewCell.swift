@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PlayListTableViewCell: UITableViewCell {
 
@@ -27,9 +28,11 @@ class PlayListTableViewCell: UITableViewCell {
         isLiked: Bool
     ) {
         
+        albumImgView.kf.setImage(with: URL(string: albumImg))
         
+        albumTitleLbl.text = albumTitle
         
-        
+        likedBtn.isSelected = isLiked
     }
 
 }

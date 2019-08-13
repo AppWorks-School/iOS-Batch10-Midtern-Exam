@@ -66,7 +66,7 @@ class KKboxProvider {
         
         guard let user = user else { return }
         
-        let url = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/\(id)/tracks?territory=TW&limit=3")!
+        let url = URL(string: "https://api.kkbox.com/v1.1/new-hits-playlists/\(id)/tracks?territory=TW&limit=10")!
         
         var request = URLRequest(url: url)
         

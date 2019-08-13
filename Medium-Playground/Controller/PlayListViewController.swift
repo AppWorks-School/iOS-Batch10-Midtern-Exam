@@ -33,6 +33,11 @@ class PlayListViewController: UIViewController {
                         
                         self?.playList = playList
                         
+                        DispatchQueue.main.async {
+                            
+                            self?.playListView.tableView.reloadData()
+                        }
+                        
                     case .failure(_):
                         break
                     }
@@ -66,7 +71,11 @@ extension PlayListViewController: UITableViewDataSource {
         
         let track = playList.data[indexPath.row]
         
-        playListCell.layoutCell(albumImg: track.album.images[0].url, albumTitle: track.name, isLiked: false)
+        playListCell.layoutCell(
+            albumImg: track.album.images[0].url,
+            albumTitle: track.name,
+            isLiked: true
+        )
         
         return playListCell
     }
