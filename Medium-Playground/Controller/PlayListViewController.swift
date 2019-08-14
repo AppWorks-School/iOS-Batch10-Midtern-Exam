@@ -47,7 +47,6 @@ class PlayListViewController: UIViewController {
                 break
             }
         })
-        
     }
 }
 
@@ -93,5 +92,18 @@ extension PlayListViewController: UITableViewDelegate {
         })
         
         animator.startAnimation()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if (scrollView.bounds.origin.y < 0) && (scrollView.bounds.origin.y > -UIScreen.main.bounds.width) {
+            
+            playListView.headerImgView.frame.origin.y = -(scrollView.bounds.origin.y + UIScreen.main.bounds.width)
+        }
+        
+        if scrollView.bounds.origin.y < -UIScreen.main.bounds.width {
+            
+            playListView.headerImgView.frame.size.height = -scrollView.bounds.origin.y
+        }
     }
 }

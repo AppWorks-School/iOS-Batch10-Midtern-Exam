@@ -19,7 +19,12 @@ class PlayListView: UIView {
         
         headerImgView.kf.setImage(with: URL(string: "https://i.kfs.io/playlist/global/26541395v266/cropresize/600x600.jpg"))
         
-        headerImgView.frame.size.height = UIScreen.main.bounds.width
+        
+        headerImgView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+        
+        tableView.contentInset = UIEdgeInsets(top: UIScreen.main.bounds.width, left: 0, bottom: 0, right: 0)
+        
+        tableView.contentOffset = CGPoint(x: 0, y: UIScreen.main.bounds.width)
     }
     
     
