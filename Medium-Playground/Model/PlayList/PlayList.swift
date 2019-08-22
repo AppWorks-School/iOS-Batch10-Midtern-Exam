@@ -25,6 +25,12 @@ struct Track: Codable {
     
     let album: Album
     
+    var isLiked = false
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case id, name, url, album
+    }
 }
 
 struct Album: Codable {

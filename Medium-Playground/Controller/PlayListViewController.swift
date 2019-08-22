@@ -117,8 +117,15 @@ extension PlayListViewController: UITableViewDataSource {
         playListCell.layoutCell(
             albumImg: track.album.images[0].url,
             albumTitle: track.name,
-            isLiked: true
+            isLiked: track.isLiked
         )
+        
+        playListCell.touchHandler = { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.playList?.data?[indexPath.row].isLiked = !track.isLiked
+        }
         
         return playListCell
     }
@@ -130,7 +137,7 @@ extension PlayListViewController: UITableViewDelegate {
         
         cell.alpha = 0
         
-        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut, animations: {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
             
             cell.alpha = 1
         })
@@ -141,15 +148,11 @@ extension PlayListViewController: UITableViewDelegate {
             
             isFetchNextPage = true
             
-            print("fetch next page", playList!.paging.offset!)
-            
             fetchPlayList()
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        print(scrollView.bounds.origin.y)
         
         if (scrollView.bounds.origin.y < 0) && (scrollView.bounds.origin.y >= -UIScreen.main.bounds.width) {
             

@@ -17,9 +17,18 @@ class PlayListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var likedBtn: UIButton!
     
+    var touchHandler: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+    
+    @IBAction func didTouchLikeBtn(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        
+        touchHandler?()
     }
     
     func layoutCell(
