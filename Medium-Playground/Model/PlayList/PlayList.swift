@@ -10,9 +10,9 @@ import Foundation
 
 struct PlayList: Codable {
     
-    let data: [Track]
+    var data: [Track]?
     
-    let paging: Paging
+    var paging: Paging
 }
 
 struct Track: Codable {
@@ -20,6 +20,8 @@ struct Track: Codable {
     let id: String
     
     let name: String
+    
+    let url: String
     
     let album: Album
     
@@ -59,9 +61,5 @@ struct KKImage: Codable {
 
 struct Paging: Codable {
     
-    let offset: Int
-    
-    let limit: Int
-    
-    let next: String
+    var offset: Int?
 }

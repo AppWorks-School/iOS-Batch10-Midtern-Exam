@@ -12,41 +12,86 @@ class PlayListViewController: UIViewController {
 
     @IBOutlet weak var playListView: PlayListView!
     
-    let kkboxProvider = KKboxProvider()
-    
     var playList: PlayList?
+    
+    var isFetchNextPage: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        kkboxProvider.signIn(completion: { [weak self] result in
+        signIn(completion: { [weak self] in
+            
+            self?.fetchPlayList(offset: 0)
+        })
+    }
+    
+    //MARK: - Action
+    
+    func signIn(completion: @escaping () -> Void) {
+        
+        KKboxAuthManager.signIn { result in
             
             switch result{
                 
-            case .success(_):
+            case .success:
                 
-                self?.kkboxProvider.fetchNewHitsPlaylist("DZrC8m29ciOFY2JAm3", completion: { [weak self] result in
+                completion()
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
+    func fetchPlayList() {
+        
+        guard let offset = playList?.paging.offset else { return }
+        
+        fetchPlayList(offset: offset + 20)
+    }
+    
+    func fetchPlayList(offset: Int) {
+        
+        KKboxProvider.fetchNewHitsPlaylist(
+            "DZrC8m29ciOFY2JAm3",
+            offset: String(offset),
+            completion: { [weak self] result in
+                
+                switch result{
                     
-                    switch result{
+                case .success(let playList):
+                    
+                    guard let list = playList.data,
+                          list.count > 0
+                    else {
                         
-                    case .success(let playList):
+                        self?.playList?.paging.offset = nil
+                        
+                        return
+                    }
+                    
+                    if self?.playList == nil {
                         
                         self?.playList = playList
+                    
+                    } else {
                         
-                        DispatchQueue.main.async {
-                            
-                            self?.playListView.tableView.reloadData()
-                        }
+                        self?.playList?.data?.append(contentsOf: playList.data!)
                         
-                    case .failure(_):
-                        break
+                        self?.playList?.paging.offset = playList.paging.offset
                     }
-                })
-                
-            case .failure(_):
-                break
+                    
+                    self?.playListView.tableView.reloadData()
+                    
+                    self?.isFetchNextPage = false
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
             }
-        })
+        )
     }
 }
 
@@ -54,7 +99,7 @@ extension PlayListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return playList?.data.count ?? 0
+        return playList?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,13 +107,12 @@ extension PlayListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlayListTableViewCell.identifier, for: indexPath)
         
         guard let playListCell = cell as? PlayListTableViewCell,
-              let playList = self.playList
+              let playList = self.playList,
+              let track = playList.data?[indexPath.row]
         else {
             
             return cell
         }
-        
-        let track = playList.data[indexPath.row]
         
         playListCell.layoutCell(
             albumImg: track.album.images[0].url,
@@ -92,11 +136,22 @@ extension PlayListViewController: UITableViewDelegate {
         })
         
         animator.startAnimation()
+        
+        if (indexPath.row > playList!.data!.count - 5) && !isFetchNextPage {
+            
+            isFetchNextPage = true
+            
+            print("fetch next page", playList!.paging.offset!)
+            
+            fetchPlayList()
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if (scrollView.bounds.origin.y < 0) && (scrollView.bounds.origin.y > -UIScreen.main.bounds.width) {
+        print(scrollView.bounds.origin.y)
+        
+        if (scrollView.bounds.origin.y < 0) && (scrollView.bounds.origin.y >= -UIScreen.main.bounds.width) {
             
             playListView.updateHeaderViewLayout(
                 y: -(scrollView.bounds.origin.y + UIScreen.main.bounds.width) / 4,
@@ -105,7 +160,14 @@ extension PlayListViewController: UITableViewDelegate {
         
         if scrollView.bounds.origin.y < -UIScreen.main.bounds.width {
             
-            playListView.updateHeaderViewLayout(y: 0, alpha: 0, width: -scrollView.frame.origin.y)
+            playListView.updateHeaderViewLayout(y: 0, alpha: 0, width: -scrollView.bounds.origin.y)
+        }
+        
+        if scrollView.bounds.origin.y > 0 {
+            
+            playListView.headerImgView.alpha = 0.0
+            
+            playListView.blurView.alpha = 0.0
         }
     }
 }

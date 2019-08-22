@@ -36,8 +36,12 @@ class PlayListView: UIView {
         
         headerImgView.frame.origin.y = y
         
+        headerImgView.alpha = 1 - alpha
+        
         blurView.frame.origin.y = y
         
         blurView.alpha = alpha
+    
+        headerImgView.frame.size.height = width
     }
 }

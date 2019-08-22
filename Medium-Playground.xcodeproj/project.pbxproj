@@ -19,6 +19,14 @@
 		3C054A892301C523004C574C /* PlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A882301C523004C574C /* PlayListView.swift */; };
 		3C054A8B2301C86E004C574C /* PlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A8A2301C86E004C574C /* PlayListTableViewCell.swift */; };
 		3C054A8E2301C8AE004C574C /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */; };
+		3C476B86230E6A87007EC3FC /* KKboxAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B85230E6A87007EC3FC /* KKboxAuthManager.swift */; };
+		3C476B88230E6BFD007EC3FC /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B87230E6BFD007EC3FC /* KeyChainManager.swift */; };
+		3C476B8A230E6D5C007EC3FC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B89230E6D5C007EC3FC /* Constant.swift */; };
+		3C476B8C230E724E007EC3FC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B8B230E724E007EC3FC /* HTTPClient.swift */; };
+		3C476B8F230E739B007EC3FC /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B8E230E739B007EC3FC /* AuthAPI.swift */; };
+		3C476B91230E7437007EC3FC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B90230E7436007EC3FC /* String+Extension.swift */; };
+		3C476B93230E759F007EC3FC /* FormDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B92230E759F007EC3FC /* FormDataHandler.swift */; };
+		3C476B98230E7C76007EC3FC /* PlayListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C476B97230E7C76007EC3FC /* PlayListAPI.swift */; };
 		F523B137941892600A3F2393 /* Pods_Medium_Playground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90B8C7393DA38729C6F54354 /* Pods_Medium_Playground.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +47,14 @@
 		3C054A882301C523004C574C /* PlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListView.swift; sourceTree = "<group>"; };
 		3C054A8A2301C86E004C574C /* PlayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableViewCell.swift; sourceTree = "<group>"; };
 		3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		3C476B85230E6A87007EC3FC /* KKboxAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKboxAuthManager.swift; sourceTree = "<group>"; };
+		3C476B87230E6BFD007EC3FC /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		3C476B89230E6D5C007EC3FC /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		3C476B8B230E724E007EC3FC /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3C476B8E230E739B007EC3FC /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		3C476B90230E7436007EC3FC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		3C476B92230E759F007EC3FC /* FormDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDataHandler.swift; sourceTree = "<group>"; };
+		3C476B97230E7C76007EC3FC /* PlayListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListAPI.swift; sourceTree = "<group>"; };
 		90B8C7393DA38729C6F54354 /* Pods_Medium_Playground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medium_Playground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,9 +108,10 @@
 		3C036DF12301579A00613270 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3C036DF2230157A700613270 /* User.swift */,
-				3C036DF423016BDF00613270 /* PlayList.swift */,
-				3C036DEF2301508100613270 /* KKboxProvider.swift */,
+				3C476B94230E7C05007EC3FC /* HTTP */,
+				3C476B8D230E7387007EC3FC /* Auth */,
+				3C476B95230E7C12007EC3FC /* PlayList */,
+				3C476B96230E7C2C007EC3FC /* KeyChain */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,8 +145,47 @@
 			isa = PBXGroup;
 			children = (
 				3C054A8D2301C8AE004C574C /* UITableViewCell+Extension.swift */,
+				3C476B90230E7436007EC3FC /* String+Extension.swift */,
+				3C476B89230E6D5C007EC3FC /* Constant.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		3C476B8D230E7387007EC3FC /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3C036DF2230157A700613270 /* User.swift */,
+				3C476B8E230E739B007EC3FC /* AuthAPI.swift */,
+				3C476B92230E759F007EC3FC /* FormDataHandler.swift */,
+				3C476B85230E6A87007EC3FC /* KKboxAuthManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3C476B94230E7C05007EC3FC /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				3C476B8B230E724E007EC3FC /* HTTPClient.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		3C476B95230E7C12007EC3FC /* PlayList */ = {
+			isa = PBXGroup;
+			children = (
+				3C036DF423016BDF00613270 /* PlayList.swift */,
+				3C476B97230E7C76007EC3FC /* PlayListAPI.swift */,
+				3C036DEF2301508100613270 /* KKboxProvider.swift */,
+			);
+			path = PlayList;
+			sourceTree = "<group>";
+		};
+		3C476B96230E7C2C007EC3FC /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				3C476B87230E6BFD007EC3FC /* KeyChainManager.swift */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 		992038A60582664B1AE07F88 /* Frameworks */ = {
@@ -267,11 +323,19 @@
 			files = (
 				3C054A892301C523004C574C /* PlayListView.swift in Sources */,
 				3C036DF3230157A700613270 /* User.swift in Sources */,
+				3C476B8C230E724E007EC3FC /* HTTPClient.swift in Sources */,
+				3C476B8F230E739B007EC3FC /* AuthAPI.swift in Sources */,
 				3C036DF523016BDF00613270 /* PlayList.swift in Sources */,
+				3C476B88230E6BFD007EC3FC /* KeyChainManager.swift in Sources */,
 				3C054A842301C471004C574C /* PlayListViewController.swift in Sources */,
 				3C036DF02301508100613270 /* KKboxProvider.swift in Sources */,
+				3C476B98230E7C76007EC3FC /* PlayListAPI.swift in Sources */,
+				3C476B91230E7437007EC3FC /* String+Extension.swift in Sources */,
 				3C054A8B2301C86E004C574C /* PlayListTableViewCell.swift in Sources */,
 				3C036DDC23014E1100613270 /* AppDelegate.swift in Sources */,
+				3C476B8A230E6D5C007EC3FC /* Constant.swift in Sources */,
+				3C476B93230E759F007EC3FC /* FormDataHandler.swift in Sources */,
+				3C476B86230E6A87007EC3FC /* KKboxAuthManager.swift in Sources */,
 				3C054A8E2301C8AE004C574C /* UITableViewCell+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

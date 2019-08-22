@@ -8,4 +8,5 @@ target 'Medium-Playground' do
   # Pods for Medium-Playground
 
   pod 'Kingfisher'
+  pod 'KeychainAccess'
 end
