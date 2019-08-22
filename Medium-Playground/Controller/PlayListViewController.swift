@@ -84,11 +84,11 @@ extension PlayListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        cell.frame.origin.x = UIScreen.main.bounds.width
+        cell.alpha = 0
         
-        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut, animations: {
+        let animator = UIViewPropertyAnimator(duration: 1, curve: .easeInOut, animations: {
             
-            cell.frame.origin.x = 0
+            cell.alpha = 1
         })
         
         animator.startAnimation()
@@ -98,7 +98,9 @@ extension PlayListViewController: UITableViewDelegate {
         
         if (scrollView.bounds.origin.y < 0) && (scrollView.bounds.origin.y > -UIScreen.main.bounds.width) {
             
-            playListView.headerImgView.frame.origin.y = -(scrollView.bounds.origin.y + UIScreen.main.bounds.width)
+            playListView.updateHeaderViewLayout(
+                y: -(scrollView.bounds.origin.y + UIScreen.main.bounds.width) / 4,
+                alpha: 1 + scrollView.bounds.origin.y / UIScreen.main.bounds.width)
         }
         
         if scrollView.bounds.origin.y < -UIScreen.main.bounds.width {
