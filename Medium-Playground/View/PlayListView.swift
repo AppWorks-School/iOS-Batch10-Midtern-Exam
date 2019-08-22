@@ -25,12 +25,14 @@ class PlayListView: UIView {
         
         blurView.frame = headerImgView.frame
         
+        blurView.alpha = 0.0
+        
         tableView.contentInset = UIEdgeInsets(top: UIScreen.main.bounds.width, left: 0, bottom: 0, right: 0)
         
         tableView.contentOffset = CGPoint(x: 0, y: UIScreen.main.bounds.width)
     }
     
-    func updateHeaderViewLayout(y: CGFloat, alpha: CGFloat) {
+    func updateHeaderViewLayout(y: CGFloat, alpha: CGFloat, width: CGFloat = UIScreen.main.bounds.width) {
         
         headerImgView.frame.origin.y = y
         

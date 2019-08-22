@@ -105,7 +105,7 @@ extension PlayListViewController: UITableViewDelegate {
         
         if scrollView.bounds.origin.y < -UIScreen.main.bounds.width {
             
-            playListView.headerImgView.frame.size.height = -scrollView.bounds.origin.y
+            playListView.updateHeaderViewLayout(y: 0, alpha: 0, width: -scrollView.frame.origin.y)
         }
     }
 }
